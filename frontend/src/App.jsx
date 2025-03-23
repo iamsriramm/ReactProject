@@ -10,13 +10,13 @@ import SingleCup from "./components/SingleCup";
 import SignIn from "./components/SignIn";
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user1, setUser] = useState(null);
   const navigate = useNavigate();
 
   // ✅ Load session data on app start
   useEffect(() => {
-    const storedUser = sessionStorage.getItem("getUser");
-    const name=storedUser.name;
+    const storedUser = sessionStorage.getItem("user");
+
     if (storedUser) {
       setUser(name);
     }
@@ -32,7 +32,7 @@ function App() {
   return (
     <div>
       {/* ✅ Show login/logout buttons based on session */}
-      <NavBar user={user} onLogout={handleLogout} />
+      <NavBar user={user1} onLogout={handleLogout} />
 
       <Routes>
         <Route path="/" element={<><Mobiles /> <Cup /></>} />
