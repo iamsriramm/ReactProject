@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom"; // For redirecting to login
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
     name: "",
-    email:"",
+    email: "",
     password: "",
     address: "",
     phone: "",
   });
+
+  const [loading, setLoading] = useState(false); // Prevents multiple clicks
+  const navigate = useNavigate(); // Redirect function
 
   // Handle Input Changes
   const handleChange = (e) => {
@@ -18,14 +22,30 @@ const SignUp = () => {
   // Handle Form Submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // Start loading
+
     try {
-      const response = await axios.post("https://server-teal-zeta.vercel.app/signup/addemp", formData, {
-        headers: { "Content-Type": "application/json" },
-      });
-  
+      const response = await axios.post(
+        "https://server-teal-zeta.vercel.app/signup/addemp",
+        formData,
+        { headers: { "Content-Type": "application/json" } }
+      );
+
       console.log("Submitted Data:", formData);
+
+      if (response.status === 201) {
+        alert("Signup successful! Redirecting to login...");
+        navigate("/login"); // Redirect to login page
+      } else {
+        alert(response.data.message || "Signup failed. Try again.");
+      }
     } catch (error) {
       console.error("Error:", error);
+      alert(
+        error.response?.data?.message || "Something went wrong! Try again."
+      );
+    } finally {
+      setLoading(false); // Stop loading
     }
   };
 
@@ -33,20 +53,45 @@ const SignUp = () => {
     <div className="form-container">
       <form onSubmit={handleSubmit}>
         <label>Name</label>
-        <input type="text" name="name" value={formData.name} onChange={handleChange} required />
+        <input
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
 
         <label>Email</label>
-        <input type="text" name="email" value={formData.email} onChange={handleChange} required />
+        <input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
 
         <label>Password</label>
-        <input type="password" name="password" value={formData.password} onChange={handleChange} required />
+        <input
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          required
+          minLength="6"
+        />
 
         <label>Address</label>
-        <input type="text" name="address" value={formData.address} onChange={handleChange} required />
+        <input
+          type="text"
+          name="address"
+          value={formData.address}
+          onChange={handleChange}
+          required
+        />
 
         <label>Phone</label>
         <input
-          type="text"
+          type="tel"
           name="phone"
           value={formData.phone}
           onChange={handleChange}
@@ -56,7 +101,9 @@ const SignUp = () => {
           required
         />
 
-        <input type="submit" value="Sign Up" />
+        <button type="submit" disabled={loading}>
+          {loading ? "Signing Up..." : "Sign Up"}
+        </button>
       </form>
     </div>
   );
