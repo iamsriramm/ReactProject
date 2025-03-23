@@ -9,7 +9,7 @@ function Login() {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post("https://server-teal-zeta.vercel.app/login", { email, password });
+      const response = await axios.post("https://server-teal-zeta.vercel.app/verify/login", { email, password });
 
       setMessage(response.data.message); // Show success message
       localStorage.setItem("token", response.data.token); // Store token
