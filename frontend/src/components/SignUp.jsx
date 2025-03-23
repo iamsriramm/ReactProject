@@ -35,7 +35,7 @@ const SignUp = () => {
 
       if (response.status === 201) {
         alert("Signup successful! Redirecting to login...");
-        navigate("/login"); // Redirect to login page
+        navigate("/signin"); // Redirect to login page
       } else {
         alert(response.data.message || "Signup failed. Try again.");
       }
