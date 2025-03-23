@@ -12,7 +12,7 @@ const SignUp = () => {
   });
 
   const [loading, setLoading] = useState(false); // Prevents multiple clicks
-  const navigate = useNavigate(); // Redirect function
+  const navigate = useNavigate(); 
 
   // Handle Input Changes
   const handleChange = (e) => {
