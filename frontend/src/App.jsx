@@ -16,8 +16,9 @@ function App() {
   // ✅ Load session data on app start
   useEffect(() => {
     const storedUser = sessionStorage.getItem("getUser");
+    const name=storedUser.name;
     if (storedUser) {
-      setUser(JSON.parse(storedUser));
+      setUser(name);
     }
   }, []);
 
