@@ -18,7 +18,7 @@ function App() {
     const storedUser = sessionStorage.getItem("user");
 
     if (storedUser) {
-      setUser(name);
+      setUser(storedUser);
     }
   }, []);
 
