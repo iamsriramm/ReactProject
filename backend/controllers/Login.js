@@ -22,6 +22,8 @@ const HandleLogin = async (req, res) => {
         // Compare passwords
         if (password === getUser.password) {  // Ensure passwords are stored as plain text
             console.log("Login Success");
+    
+    sessionStorage.setItem("user", getUser);
             return res.status(200).json({ message: `Welcome ${getUser.name}` });
         } else {
             return res.status(401).json({ message: "Password incorrect" });
