@@ -10,23 +10,20 @@ function Login() {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post(
-        "https://server-teal-zeta.vercel.app/verify/login",
-        { email, password }
-      );
-
-      setMessage(response.data.message); // Show success message
-
+      const response = await axios.post("https://server-teal-zeta.vercel.app/verify/login", { email, password });
   
-
+      // ✅ Store token & user info in sessionStorage
+      sessionStorage.setItem("token", response.data.token);
+      sessionStorage.setItem("getUser", JSON.stringify(response.data.getUser));
+  
       alert("Login Successful! Redirecting...");
       navigate("/"); // ✅ Redirect to home page
-
+  
     } catch (error) {
-      setMessage(error.response?.data?.message || "Login failed");
+      alert(error.response?.data?.message || "Login failed");
     }
   };
-
+ 
   return (
     <div className="login-container">
       <div className="login-box">

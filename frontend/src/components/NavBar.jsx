@@ -12,7 +12,7 @@ const NavBar = ({user,onLogout}) => {
         <li>Contact Us</li>
         <li>Orders</li>
          <li onClick={onLogout}>Logout</li>
-        <li>{user}</li>
+       
       </ul>
     </div>
   )

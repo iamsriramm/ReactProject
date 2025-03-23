@@ -15,10 +15,9 @@ function App() {
 
   // ✅ Load session data on app start
   useEffect(() => {
-    const storedUser = sessionStorage.getItem("user");
-
+    const storedUser = sessionStorage.getItem("getUser");
     if (storedUser) {
-      setUser(storedUser);
+      setUser(JSON.parse(storedUser)); // ✅ Convert string to object
     }
   }, []);
 
@@ -33,6 +32,9 @@ function App() {
     <div>
       {/* ✅ Show login/logout buttons based on session */}
       <NavBar user={user1} onLogout={handleLogout} />
+
+      {/* ✅ Show Welcome Message */}
+      <h1>Welcome, {user1 ? user1.name : "Guest"}!</h1>
 
       <Routes>
         <Route path="/" element={<><Mobiles /> <Cup /></>} />
