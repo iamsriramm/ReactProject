@@ -1,0 +1,195 @@
+ul {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Align items in center */
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+  .tit{
+    display: inline-block;
+    margin: 0px;
+  font-weight: bolder;
+    color:white;
+  font-size: 30px;
+    background-color: rgb(2, 23, 73)
+    
+  }
+  @keyframes tit {
+    0%{
+      color:rgb(11, 210, 11);
+    }
+    20%{
+      color:rgb(12, 233, 233);
+    }
+    50%{
+      color:rgb(209, 55, 12);
+    }
+    100%{
+      color:rgb(10, 235, 235);
+    }
+    
+}
+li a{
+  color: white;
+  text-decoration: none;
+}
+li{
+ 
+  text-decoration: none;
+  flex: 1; /* Makes all list items take equal width */
+  text-align: center;
+  padding: 15px 0; /* Adjust vertical padding */
+  background-color: green; /* Background color for items */
+  color: white;
+  font-size: 18px;
+  border: 1px solid #555; /* Optional border for better visibility */
+}
+
+li:hover {
+  background-color: red; /* Change color on hover */
+}
+.div1{
+  display: flex;
+ position: relative;
+ top:30px;
+ padding-bottom: 30px;
+  
+}
+.div2{
+ display: flex;
+ flex-direction: column;
+ flex:1;
+ justify-content: center;
+  width: 200px;
+  height: 150px;
+  border: 1px solid black;
+  padding: 20px;
+
+}
+.img1:hover{
+  width: 220px;
+  height: 160px;
+}
+img{
+  width: 200px;
+  height: 150px;
+  object-fit: contain;
+}
+
+.div3 {
+  margin-top: 5px; /* Adds space between image and name */
+  text-align: center;
+  font-weight: bold;
+}
+/* Center the form */
+.form-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f4f4f4; /* Light gray background */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the form */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels */
+label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Input fields */
+input[type="text"],
+input[type="password"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Submit button */
+input[type="submit"] {
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #28a745; /* Green color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #218838;
+}
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideSide{
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.single{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex: 1;
+  align-items: center;
+  border: 1px solid black;
+}
+.single1{
+  
+  font-size: 20px;
+  animation: slideSide 1s ease-out;
+}
+
+.img2{
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+  padding: 40px;
+  animation: slideDown 1s ease-out;
+}
+span{
+  font-weight: bold;
+}
+.but1:hover{
+ cursor: pointer;
+ background-color: red;
+}
+.but1{
+  font-size: 20px;
+  border-radius: 10px;
+  padding: 4px;
+  background-color:orange;
+  color:white;
+  padding-left: 20px;
+  padding-right: 20px;
+
+}
