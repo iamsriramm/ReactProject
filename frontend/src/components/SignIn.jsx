@@ -17,9 +17,7 @@ function Login() {
 
       setMessage(response.data.message); // Show success message
 
-      // ✅ Store token & user details in sessionStorage
-      sessionStorage.setItem("token", response.data.token);
-      sessionStorage.setItem("getUser", JSON.stringify(response.data.getUser)); // Store user details
+  
 
       alert("Login Successful! Redirecting...");
       navigate("/"); // ✅ Redirect to home page
