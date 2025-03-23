@@ -20,8 +20,8 @@ const HandleLogin = async (req, res) => {
     }
 
     // ✅ Compare Hashed Passwords
-    const isMatch = await bcrypt.compare(password, getUser.password);
-    if (!isMatch) {
+    
+    if (password!==getUser.password) {
       return res.status(401).json({ message: "Password incorrect" });
     }
 
