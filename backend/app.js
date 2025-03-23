@@ -4,7 +4,7 @@ const cors=require('cors')
 const app=express()
 const mongoose=require('mongoose')
 const signup=require('./routes/EmployeeRoutes')
-const port=5000
+const port=process.env.PORT || 5000
 dotEnv.config()
 app.use(cors())
 app.use(express.json())
