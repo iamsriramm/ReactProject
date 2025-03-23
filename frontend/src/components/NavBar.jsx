@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const NavBar = () => {
+const NavBar = ({user,onLogout}) => {
   return (
     <div>
       <ul>
@@ -11,6 +11,7 @@ const NavBar = () => {
        <li><Link to='/signin'>LogIn</Link></li>
         <li>Contact Us</li>
         <li>Orders</li>
+        <li>{user}</li>
       </ul>
     </div>
   )
