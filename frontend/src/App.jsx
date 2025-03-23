@@ -1,27 +1,45 @@
-import './App.css';
-import { Routes,Route } from 'react-router-dom';
-import NavBar from './components/NavBar';
-import Mobiles from './components/Mobiles';
-import SignUp from './components/SignUp';
-import Cup from './components/Cup';
-import SingleBar from './components/SingleBar';
-import SingleCup from './components/SingleCup';
-import SignIn from './components/SignIn'
+import "./App.css";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import NavBar from "./components/NavBar";
+import Mobiles from "./components/Mobiles";
+import SignUp from "./components/SignUp";
+import Cup from "./components/Cup";
+import SingleBar from "./components/SingleBar";
+import SingleCup from "./components/SingleCup";
+import SignIn from "./components/SignIn";
+
 function App() {
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
+  // ✅ Load session data on app start
+  useEffect(() => {
+    const storedUser = sessionStorage.getItem("getUser");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
+  // ✅ Logout function
+  const handleLogout = () => {
+    sessionStorage.clear(); // Clear session storage
+    setUser(null); // Update state
+    navigate("/signin"); // Redirect to login page
+  };
+
   return (
-   <div>
-    
-     <NavBar/> 
-       <Routes>
-     <Route path="/" element={<><Mobiles/> <Cup/></>}></Route>
-        <Route path="/mobiles/:id" element={<SingleBar/>}></Route>
-        <Route path="/cups/:id" element={<SingleCup/>}></Route>
-      <Route path="/signup" element={<SignUp/>}></Route>
-      <Route path="/signin" element={<SignIn/>}></Route>
-     </Routes>
- 
-  {/* <h1 id="tit">ICE STONE</h1>
-  <h3 id="tit">LIFE IS LIKE ICE CREAM,ENJOY IT BEFORE IT MELTS</h3> */}
+    <div>
+      {/* ✅ Show login/logout buttons based on session */}
+      <NavBar user={user} onLogout={handleLogout} />
+
+      <Routes>
+        <Route path="/" element={<><Mobiles /> <Cup /></>} />
+        <Route path="/mobiles/:id" element={<SingleBar />} />
+        <Route path="/cups/:id" element={<SingleCup />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/signin" element={<SignIn setUser={setUser} />} />
+      </Routes>
     </div>
   );
 }
