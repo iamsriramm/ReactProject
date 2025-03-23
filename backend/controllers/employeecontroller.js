@@ -12,7 +12,7 @@ const createmp = async (req, res) => {
     // ✅ Check if employee already exists
     const existingEmployee = await Employee.findOne({ email });
     if (existingEmployee) {
-      return res.status(201).json({ message: "Employee already registered!" });
+      return res.status(401).json({ message: "Employee already registered!" });
     }
 
     // ✅ Save new employee
